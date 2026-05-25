@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🌾 Crop Recommendation — Karnataka</title>
+
+<!-- Google Translate -->
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,kn,hi',
+      autoDisplay: false
+    }, 'gt_widget');
+  }
+  setInterval(function() {
+    var bar = document.querySelector('.goog-te-banner-frame');
+    if (bar) bar.style.display = 'none';
+    document.body.style.top = '0';
+  }, 500);
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --green-dark : #1a3d1a;
+  --green-mid  : #2d6a2d;
+  --green-soft : #3a7a3a;
+  --green-pale : #e8f4e8;
+  --green-wash : #f2faf2;
+  --gold       : #c8860a;
+  --gold-pale  : #fdf6e3;
+  --border     : #c5dfc5;
+  --text-dark  : #1a2e1a;
+  --text-mid   : #4a6a4a;
+  --text-light : #7a9a7a;
+  --bg         : #f4f8f4;
+  --white      : #ffffff;
+  --radius     : 10px;
+  --shadow     : 0 2px 12px rgba(42,90,42,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* ── Google Translate Bar ── */
+#gt_widget { display: none; }
+
+#lang-bar {
+  background: var(--green-dark);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.lang-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-right: 8px;
+  font-family: 'DM Sans', sans-serif;
+}
+.lpill {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.lpill:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.lpill.active {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+}
+
+/* ── Header ── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-icon { font-size: 36px; line-height: 1; }
+.header-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  color: var(--green-dark);
+  line-height: 1.2;
+}
+.header-sub {
+  font-size: 13px;
+  color: var(--text-mid);
+  margin-top: 3px;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+.tab-btn:hover { color: var(--green-soft); }
+.tab-btn.active {
+  color: var(--green-dark);
+  border-bottom-color: var(--green-soft);
+}
+
+/* ── Main Layout ── */
+main { max-width: 1200px; margin: 0 auto; padding: 28px 24px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── Grid ── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-soft);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--green-pale);
+}
+
+/* ── Form Elements ── */
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-mid);
+  margin-bottom: 5px;
+}
+.field input[type=number],
+.field select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--green-wash);
+  transition: border 0.15s;
+}
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--green-soft);
+  background: var(--white);
+}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Sliders */
+.slider-wrap { display: flex; align-items: center; gap: 10px; }
+.slider-wrap input[type=range] {
+  flex: 1;
+  accent-color: var(--green-soft);
+  height: 4px;
+}
+.slider-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-dark);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Tips ── */
+.tips {
+  background: var(--green-wash);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green-soft);
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-top: 16px;
+}
+.tips b { color: var(--green-dark); }
+
+/* ── Submit Button ── */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--green-soft);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 18px;
+  letter-spacing: 0.3px;
+}
+.btn-submit:hover {
+  background: var(--green-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(42,106,45,0.25);
+}
+.btn-submit:active { transform: translateY(0); }
+
+/* ── Results ── */
+.results-header {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-soft);
+  margin: 24px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 13px;
+}
+thead tr th {
+  background: var(--green-pale);
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 11px 12px;
+  text-align: left;
+  border-bottom: 1.5px solid var(--border);
+  white-space: nowrap;
+}
+tbody tr td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--green-wash);
+  color: var(--text-dark);
+  vertical-align: middle;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--green-wash); }
+
+/* Rank medals */
+.rank-1 { color: var(--gold); font-weight: 700; font-size: 15px; }
+.rank-2 { color: #888; font-weight: 700; }
+.rank-3 { color: #a07040; font-weight: 700; }
+
+.confidence-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--green-pale);
+  border-radius: 3px;
+  min-width: 60px;
+}
+.bar-fill {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--green-soft);
+  transition: width 0.4s ease;
+}
+.bar-num { font-size: 12px; font-weight: 600; color: var(--green-dark); min-width: 36px; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.badge-green { background: #e0f2e0; color: #2a6a2a; }
+.badge-amber { background: #fef3c7; color: #92400e; }
+.badge-gray  { background: #f0f0f0; color: #666; }
+
+/* Loading spinner */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+  font-size: 14px;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--green-pale);
+  border-top-color: var(--green-soft);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Browse tab */
+.browse-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 160px auto;
+  gap: 12px;
+  align-items: flex-end;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px) { .browse-controls { grid-template-columns: 1fr 1fr; } }
+
+.btn-browse {
+  padding: 10px 20px;
+  background: var(--green-soft);
+  color: var(--white);
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-browse:hover { background: var(--green-mid); }
+
+/* Hide GT chrome */
+.goog-te-banner-frame, .goog-te-balloon-frame,
+#goog-gt-tt, .goog-tooltip, .goog-te-ftab-float,
+.goog-te-menu-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-logo-link, .goog-te-gadget span { display: none !important; }
+.goog-te-gadget { font-size: 0 !important; }
+</style>
+</head>
+<body>
+
+<!-- Hidden GT mount -->
+<div id="gt_widget"></div>
+
+<!-- Language Bar -->
+<div id="lang-bar">
+  <span class="lang-label">🌐 Translate:</span>
+  <button class="lpill active" id="pill-en" onclick="switchLang('en')">English</button>
+  <button class="lpill" id="pill-kn" onclick="switchLang('kn')">ಕನ್ನಡ</button>
+  <button class="lpill" id="pill-hi" onclick="switchLang('hi')">हिंदी</button>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-icon">🌾</div>
+  <div>
+    <div class="header-title">Smart Crop Recommendation System</div>
+    <div class="header-sub">Karnataka District Crop Advisor — Soil · Climate · Regional Suitability</div>
+  </div>
+</header>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('recommend', this)">🔍 Get Recommendation</button>
+  <button class="tab-btn" onclick="switchTab('browse', this)">🗺️ Regional Crop Browser</button>
+</div>
+
+<main>
+
+  <!-- ── TAB 1: Recommend ── -->
+  <div id="panel-recommend" class="tab-panel active">
+    <div class="grid-2">
+
+      <!-- Soil & Climate -->
+      <div class="card">
+        <div class="card-title">🧪 Soil Nutrients</div>
+        <div class="field-row">
+          <div class="field">
+            <label>Nitrogen (N) mg/kg</label>
+            <input type="number" id="N" value="90" min="0" max="300"/>
+          </div>
+          <div class="field">
+            <label>Phosphorus (P) mg/kg</label>
+            <input type="number" id="P" value="42" min="0" max="300"/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Potassium (K) mg/kg</label>
+            <input type="number" id="K" value="43" min="0" max="300"/>
+          </div>
+          <div class="field">
+            <label>Soil pH</label>
+            <div class="slider-wrap">
+              <input type="range" id="ph" min="3.5" max="9.5" step="0.1" value="6.5"
+                oninput="document.getElementById('ph-val').textContent=this.value"/>
+              <span class="slider-val" id="ph-val">6.5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-title" style="margin-top:18px">🌡️ Climate</div>
+        <div class="field-row">
+          <div class="field">
+            <label>Temperature (°C)</label>
+            <input type="number" id="temperature" value="25" min="5" max="50"/>
+          </div>
+          <div class="field">
+            <label>Humidity (%)</label>
+            <input type="number" id="humidity" value="80" min="10" max="100"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual Rainfall (mm)</label>
+          <input type="number" id="rainfall" value="200" min="20" max="3000"/>
+        </div>
+      </div>
+
+      <!-- Location & Config -->
+      <div class="card">
+        <div class="card-title">📍 Location — Karnataka</div>
+        <div class="field">
+          <label>District</label>
+          <select id="district"></select>
+        </div>
+        <div class="field">
+          <label>Season</label>
+          <select id="season"></select>
+        </div>
+
+        <div class="card-title" style="margin-top:18px">⚙️ Model Weights</div>
+        <div class="field">
+          <label>NPK Model Weight <span style="color:var(--text-light)">(rest → Region Model)</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="w1" min="0.1" max="0.9" step="0.05" value="0.6"
+              oninput="document.getElementById('w1-val').textContent=parseFloat(this.value).toFixed(2)"/>
+            <span class="slider-val" id="w1-val">0.60</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Top N Crops to Show</label>
+          <div class="slider-wrap">
+            <input type="range" id="topn" min="3" max="10" step="1" value="5"
+              oninput="document.getElementById('topn-val').textContent=this.value"/>
+            <span class="slider-val" id="topn-val">5</span>
+          </div>
+        </div>
+
+        <div class="tips">
+          💡 <b>Tips:</b><br>
+          • Kharif = Jun–Sep (monsoon) &nbsp;|&nbsp; Rabi = Oct–Mar (winter)<br>
+          • Summer = Mar–May &nbsp;|&nbsp; Whole Year = perennial crops<br>
+          • Higher NPK weight = more soil-driven result<br>
+          • "Historically Grown" means farmers here grow this crop regularly
+        </div>
+
+        <button class="btn-submit" onclick="fetchRecommend()">🌱 Recommend Crops</button>
+      </div>
+    </div>
+
+    <div class="results-header">🏆 Recommendations</div>
+    <div id="results-area">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading recommendations...
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: Browse ── -->
+  <div id="panel-browse" class="tab-panel">
+    <p style="color:var(--text-mid);font-style:italic;margin-bottom:16px;font-size:13px">
+      Browse pre-computed regional crop suitability scores — no soil data needed.
+    </p>
+    <div class="browse-controls">
+      <div class="field" style="margin:0">
+        <label>District</label>
+        <select id="b-district"></select>
+      </div>
+      <div class="field" style="margin:0">
+        <label>Season</label>
+        <select id="b-season"></select>
+      </div>
+      <div class="field" style="margin:0">
+        <label>Top N</label>
+        <div class="slider-wrap">
+          <input type="range" id="b-topn" min="3" max="15" step="1" value="8"
+            oninput="document.getElementById('b-topn-val').textContent=this.value"/>
+          <span class="slider-val" id="b-topn-val">8</span>
+        </div>
+      </div>
+      <button class="btn-browse" onclick="fetchBrowse()">Browse →</button>
+    </div>
+    <div id="browse-area">
+      <div class="loading" style="padding:60px">Select a district and season to browse crops.</div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ── Language Switcher ──────────────────────────────────────────────────────
+function switchLang(code) {
+  ['en','kn','hi'].forEach(function(c) {
+    var el = document.getElementById('pill-' + c);
+    if (el) el.classList.toggle('active', c === code);
+  });
+  if (code === 'en') {
+    document.cookie = 'googtrans=/en/en; path=/';
+    document.cookie = 'googtrans=/en/en; domain=.' + location.hostname + '; path=/';
+    location.reload();
+    return;
+  }
+  var tries = 0;
+  var poll = setInterval(function() {
+    tries++;
+    var sel = document.querySelector('.goog-te-combo');
+    if (sel) {
+      clearInterval(poll);
+      sel.value = code;
+      sel.dispatchEvent(new Event('change'));
+    }
+    if (tries > 50) clearInterval(poll);
+  }, 150);
+}
+
+// Highlight active pill on load from cookie
+(function() {
+  var m = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
+  var cur = (m && m[1] !== 'en') ? m[1] : 'en';
+  setTimeout(function() {
+    ['en','kn','hi'].forEach(function(c) {
+      var el = document.getElementById('pill-' + c);
+      if (el) el.classList.toggle('active', c === cur);
+    });
+  }, 200);
+})();
+
+// ── Tab Switching ──────────────────────────────────────────────────────────
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Load Districts & Seasons from API ─────────────────────────────────────
+async function loadMeta() {
+  try {
+    const res = await fetch('/api/meta');
+    const data = await res.json();
+
+    ['district','b-district'].forEach(id => {
+      const sel = document.getElementById(id);
+      data.districts.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d; opt.textContent = d;
+        if (d === 'Bagalkot') opt.selected = true;
+        sel.appendChild(opt);
+      });
+    });
+
+    ['season','b-season'].forEach(id => {
+      const sel = document.getElementById(id);
+      data.seasons.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s; opt.textContent = s;
+        if (s === 'Kharif') opt.selected = true;
+        sel.appendChild(opt);
+      });
+    });
+
+    fetchRecommend();
+  } catch(e) {
+    document.getElementById('results-area').innerHTML =
+      '<div class="loading">⚠️ Could not connect to backend. Make sure main.py is running.</div>';
+  }
+}
+
+// ── Render Results Table ───────────────────────────────────────────────────
+function rankBadge(rank) {
+  if (rank === 1) return `<span class="rank-1"> 1</span>`;
+  if (rank === 2) return `<span class="rank-2"> 2</span>`;
+  if (rank === 3) return `<span class="rank-3"> 3</span>`;
+  return `<span style="color:var(--text-mid)">${rank}</span>`;
+}
+
+function suitBadge(s) {
+  if (!s || s === 'No regional data') return `<span class="badge badge-gray">${s || 'N/A'}</span>`;
+  const lo = s.toLowerCase();
+  if (lo.includes('highly') || lo.includes('excellent') || lo.includes('very'))
+    return `<span class="badge badge-green">${s}</span>`;
+  return `<span class="badge badge-amber">${s}</span>`;
+}
+
+function renderRecommendTable(rows) {
+  if (!rows || rows.length === 0)
+    return '<div class="loading">No results found for these parameters.</div>';
+
+  let html = `<div class="table-wrap"><table>
+    <thead><tr>
+      <th>Rank</th><th>Crop</th><th>Confidence</th>
+      <th>NPK Score</th><th>Region Score</th>
+      <th>Suitability</th><th>Grown % of Yrs</th>
+      <th>Avg Yield (T/Ha)</th><th>Hist. Grown</th>
+    </tr></thead><tbody>`;
+
+  rows.forEach(r => {
+    html += `<tr>
+      <td>${rankBadge(r.rank)}</td>
+      <td><b>${r.crop}</b></td>
+      <td>
+        <div class="confidence-bar">
+          <div class="bar-bg"><div class="bar-fill" style="width:${r.confidence}%"></div></div>
+          <span class="bar-num">${r.confidence}%</span>
+        </div>
+      </td>
+      <td>${r.npk_score}%</td>
+      <td>${r.region_score}%</td>
+      <td>${suitBadge(r.suitability)}</td>
+      <td>${r.freq_pct}%</td>
+      <td>${r.avg_yield}</td>
+      <td>${r.hist_grown === 'Yes'
+        ? '<span class="badge badge-green">Yes</span>'
+        : '<span class="badge badge-gray">No</span>'}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function renderBrowseTable(rows) {
+  if (!rows || rows.length === 0)
+    return '<div class="loading">No data found for this district and season.</div>';
+
+  let html = `<div class="table-wrap"><table>
+    <thead><tr>
+      <th>Rank</th><th>Crop</th><th>Score (%)</th>
+      <th>Suitability</th><th>Grown (% of Yrs)</th>
+      <th>Avg Yield (T/Ha)</th><th>Dominated (%)</th><th>Recent Yrs (post-2015)</th>
+    </tr></thead><tbody>`;
+
+  rows.forEach(r => {
+    html += `<tr>
+      <td>${rankBadge(r.rank)}</td>
+      <td><b>${r.crop}</b></td>
+      <td>${r.score_pct}%</td>
+      <td>${suitBadge(r.suitability)}</td>
+      <td>${r.freq_pct}%</td>
+      <td>${r.avg_yield}</td>
+      <td>${r.dominance}%</td>
+      <td>${r.recent_years}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table></div>';
+  return html;
+}
+
+// ── Fetch Recommend ────────────────────────────────────────────────────────
+async function fetchRecommend() {
+  document.getElementById('results-area').innerHTML =
+    '<div class="loading"><div class="spinner"></div>Analyzing soil and climate data...</div>';
+
+  const params = new URLSearchParams({
+    N           : document.getElementById('N').value,
+    P           : document.getElementById('P').value,
+    K           : document.getElementById('K').value,
+    temperature : document.getElementById('temperature').value,
+    humidity    : document.getElementById('humidity').value,
+    ph          : document.getElementById('ph').value,
+    rainfall    : document.getElementById('rainfall').value,
+    district    : document.getElementById('district').value,
+    season      : document.getElementById('season').value,
+    w_model1    : document.getElementById('w1').value,
+    top_n       : document.getElementById('topn').value,
+  });
+
+  try {
+    const res  = await fetch('/api/recommend?' + params);
+    const data = await res.json();
+    document.getElementById('results-area').innerHTML =
+      renderRecommendTable(data.results);
+  } catch(e) {
+    document.getElementById('results-area').innerHTML =
+      '<div class="loading">⚠️ Error fetching recommendations.</div>';
+  }
+}
+
+// ── Fetch Browse ───────────────────────────────────────────────────────────
+async function fetchBrowse() {
+  document.getElementById('browse-area').innerHTML =
+    '<div class="loading"><div class="spinner"></div>Loading regional data...</div>';
+
+  const params = new URLSearchParams({
+    district : document.getElementById('b-district').value,
+    season   : document.getElementById('b-season').value,
+    top_n    : document.getElementById('b-topn').value,
+  });
+
+  try {
+    const res  = await fetch('/api/browse?' + params);
+    const data = await res.json();
+    document.getElementById('browse-area').innerHTML =
+      renderBrowseTable(data.results);
+  } catch(e) {
+    document.getElementById('browse-area').innerHTML =
+      '<div class="loading">⚠️ Error fetching browse data.</div>';
+  }
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+loadMeta();
+</script>
+</body>
+</html>
